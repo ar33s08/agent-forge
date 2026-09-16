@@ -12,6 +12,7 @@ dependencies= [
   "pydantic-settings>=2.4",
   "httpx>=0.27",
 ]
+serve= ["uvicorn[standard]>=0.30"]
 
 [project.optional-dependencies]
 dev= [
@@ -21,8 +22,6 @@ dev= [
 ]
 
 
-[project.optional-dependencies.serve]
-serve= ["uvicorn[standard]>=0.30"]
 
 [project.scripts]
 agent-forge= "agent_forge.cli:main"
@@ -31,6 +30,5 @@ agent-forge= "agent_forge.cli:main"
 requires= ["hatchling>=1.26"]
 build-backend= "hatchling.build"
 
-["tests"]
 
 

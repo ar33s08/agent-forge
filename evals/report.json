@@ -1,0 +1,234 @@
+{
+  "budget_compliance_rate": 1.0,
+  "completed_rate": 0.8333333333333334,
+  "failed": 0,
+  "mean_latency_ms": 0.2803543320624158,
+  "outcomes": [
+    {
+      "budget_ok": true,
+      "completed": true,
+      "cost_usd": 0.00030000000000000003,
+      "latency_ms": 0.4635420045815408,
+      "name": "direct-greeting",
+      "passed": true,
+      "reason": "",
+      "status": "succeeded",
+      "stop_reason": "completed",
+      "tool_selection_ok": true,
+      "tools_executed": [],
+      "tools_expected": []
+    },
+    {
+      "budget_ok": true,
+      "completed": true,
+      "cost_usd": 0.00030000000000000003,
+      "latency_ms": 0.2239999594166875,
+      "name": "direct-explanation",
+      "passed": true,
+      "reason": "",
+      "status": "succeeded",
+      "stop_reason": "completed",
+      "tool_selection_ok": true,
+      "tools_executed": [],
+      "tools_expected": []
+    },
+    {
+      "budget_ok": true,
+      "completed": true,
+      "cost_usd": 0.0005,
+      "latency_ms": 0.3824589657597244,
+      "name": "single-add",
+      "passed": true,
+      "reason": "",
+      "status": "succeeded",
+      "stop_reason": "completed",
+      "tool_selection_ok": true,
+      "tools_executed": [
+        "calculator"
+      ],
+      "tools_expected": [
+        "calculator"
+      ]
+    },
+    {
+      "budget_ok": true,
+      "completed": true,
+      "cost_usd": 0.0005,
+      "latency_ms": 0.29454100877046585,
+      "name": "single-sub",
+      "passed": true,
+      "reason": "",
+      "status": "succeeded",
+      "stop_reason": "completed",
+      "tool_selection_ok": true,
+      "tools_executed": [
+        "calculator"
+      ],
+      "tools_expected": [
+        "calculator"
+      ]
+    },
+    {
+      "budget_ok": true,
+      "completed": true,
+      "cost_usd": 0.0005,
+      "latency_ms": 0.22083398653194308,
+      "name": "single-wordcount",
+      "passed": true,
+      "reason": "",
+      "status": "succeeded",
+      "stop_reason": "completed",
+      "tool_selection_ok": true,
+      "tools_executed": [
+        "wordcount"
+      ],
+      "tools_expected": [
+        "wordcount"
+      ]
+    },
+    {
+      "budget_ok": true,
+      "completed": true,
+      "cost_usd": 0.0007000000000000001,
+      "latency_ms": 0.31237496295943856,
+      "name": "chain-add-then-multiply-via-add",
+      "passed": true,
+      "reason": "",
+      "status": "succeeded",
+      "stop_reason": "completed",
+      "tool_selection_ok": true,
+      "tools_executed": [
+        "calculator",
+        "calculator",
+        "calculator"
+      ],
+      "tools_expected": [
+        "calculator",
+        "calculator",
+        "calculator"
+      ]
+    },
+    {
+      "budget_ok": true,
+      "completed": true,
+      "cost_usd": 0.0007000000000000001,
+      "latency_ms": 0.24208403192460537,
+      "name": "chain-wordcount-then-add",
+      "passed": true,
+      "reason": "",
+      "status": "succeeded",
+      "stop_reason": "completed",
+      "tool_selection_ok": true,
+      "tools_executed": [
+        "wordcount",
+        "calculator"
+      ],
+      "tools_expected": [
+        "wordcount",
+        "calculator"
+      ]
+    },
+    {
+      "budget_ok": true,
+      "completed": true,
+      "cost_usd": 0.0007000000000000001,
+      "latency_ms": 0.2550830249674618,
+      "name": "recovery-bad-op",
+      "passed": true,
+      "reason": "",
+      "status": "succeeded",
+      "stop_reason": "completed",
+      "tool_selection_ok": true,
+      "tools_executed": [
+        "calculator",
+        "calculator"
+      ],
+      "tools_expected": [
+        "calculator",
+        "calculator"
+      ]
+    },
+    {
+      "budget_ok": true,
+      "completed": false,
+      "cost_usd": 0.0007000000000000001,
+      "latency_ms": 0.24816702352836728,
+      "name": "recovery-unknown-then-known",
+      "passed": true,
+      "reason": "",
+      "status": "succeeded",
+      "stop_reason": "tool_error",
+      "tool_selection_ok": true,
+      "tools_executed": [
+        "spellcheck",
+        "wordcount"
+      ],
+      "tools_expected": [
+        "spellcheck",
+        "wordcount"
+      ]
+    },
+    {
+      "budget_ok": true,
+      "completed": false,
+      "cost_usd": 0.0009000000000000001,
+      "latency_ms": 0.27062499430030584,
+      "name": "budget-max-steps",
+      "passed": true,
+      "reason": "",
+      "status": "succeeded",
+      "stop_reason": "max_steps",
+      "tool_selection_ok": true,
+      "tools_executed": [
+        "calculator",
+        "calculator",
+        "calculator"
+      ],
+      "tools_expected": [
+        "calculator",
+        "calculator",
+        "calculator"
+      ]
+    },
+    {
+      "budget_ok": true,
+      "completed": true,
+      "cost_usd": 0.2,
+      "latency_ms": 0.24729198776185513,
+      "name": "budget-cost-single-tool",
+      "passed": true,
+      "reason": "",
+      "status": "succeeded",
+      "stop_reason": "completed",
+      "tool_selection_ok": true,
+      "tools_executed": [
+        "calculator"
+      ],
+      "tools_expected": [
+        "calculator"
+      ]
+    },
+    {
+      "budget_ok": true,
+      "completed": true,
+      "cost_usd": 0.16,
+      "latency_ms": 0.2032500342465937,
+      "name": "budget-cost-wordcount",
+      "passed": true,
+      "reason": "",
+      "status": "succeeded",
+      "stop_reason": "completed",
+      "tool_selection_ok": true,
+      "tools_executed": [
+        "wordcount"
+      ],
+      "tools_expected": [
+        "wordcount"
+      ]
+    }
+  ],
+  "pass_rate": 1.0,
+  "passed": 12,
+  "task_count": 12,
+  "tool_selection_accuracy": 1.0
+}
