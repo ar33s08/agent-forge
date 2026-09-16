@@ -1,0 +1,15 @@
+# Demo stack. The API key is an example value for local testing — never reuse a real
+# credential here, and never expose this service to the public internet.
+services:
+  agent-forge:
+    build: .
+    ports:
+      - "127.0.0.1:8080:8080"          # loopback-only bind: stays off the LAN by default
+    environment:
+      AGENTFORGE_API_KEYS: "demo-key-change-me"
+    volumes:
+      - runs:/var/lib/agent-forge
+    restart: unless-stopped
+
+volumes:
+  runs:

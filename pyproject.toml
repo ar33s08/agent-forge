@@ -1,0 +1,39 @@
+[project]
+name= "agent-forge"
+version= "0.1.0"
+description= "Ship LLM agents as real services: tool loops, sessions, traces, auth, eval-as-CI."
+readme= "README.md"
+license= { text= "Apache-2.0" }
+requires-python= ">=3.11"
+dependencies= [
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.30",
+  "pydantic>=2.8",
+  "pydantic-settings>=2.4",
+  "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+dev= [
+  "pytest>=8",
+  "ruff>=0.7",
+  "mypy>=1.11",
+]
+
+[project.scripts]
+agent-forge= "agent_forge.cli:main"
+
+[build-system]
+requires= ["hatchling>=1.26"]
+build-backend= "hatchling.build"
+
+[tool.pytest]
+testpaths= ["tests"]
+
+[tool.mypy]
+python-version= "3.11"
+ignore-missing-imports= true
+
+[tool.ruff]
+line-length= 100
+quote-style= "double"
