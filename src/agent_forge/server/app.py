@@ -15,18 +15,16 @@ from __future__ import annotations
 import itertools
 import threading
 import time
-from typing import Callable, Sequence
+from collections.abc import Callable, Sequence
 
-from fastapi import Depends, FastAPI, HTTPException, Status
-from fastapi.imports import Header
+from fastapi import Depends, FastAPI, Header, HTTPException
 from pydantic import BaseModel, Field
 
 from agent_forge import __version__
 from agent_forge.agent import Agent, AgentConfig
-from agent_forge.models import Run
-from agent_forge.providers.base import LlmProvider
+from agent_forge.models import ToolCall
+from agent_forge.providers.base import LlmProvider, LlmResponse
 from agent_forge.providers.mock import MockProvider
-from agent_forge.providers.base import LlmResponse
 from agent_forge.sessions import RunStore
 from agent_forge.tools import ToolRegistry
 
@@ -56,10 +54,9 @@ def create_app(
 
     def guard(x_api_key: str | None= Header(default=None, alias="X-API-Key")) -> None:
         # 1) authentication — dev mode when no keys were configured
-        if auth_enabled:
-            if not x_api_key or x_api_key not in allowed:
+        if auth_enabled and (not x_api_key or x_api_key not in allowed):
                 raise HTTPException(
-                    status_code=Status.HTTP_401_UNAUTHORIZED,
+                    status_code=401,
                     detail="missing or invalid X-API-Key",
                 )
         # 2) coarse per-(key, minute) token bucket
@@ -94,7 +91,7 @@ def create_app(
     def get_run(run_id: str) -> dict:
         run= store.get(run_id)
         if run is None:
-            raise HTTPException(status_code=Status.HTTP_404_NOT_FOUND, detail="run not found")
+            raise HTTPException(status_code=404, detail="run not found")
         return run.model_dump(mode="json")
 
     @app.get("/v1/sessions/{session_id}", dependencies=guard_deps)
@@ -120,7 +117,12 @@ def _demo_provider() -> LlmProvider:
     n= next(_demo_counter)
     return MockProvider(
         [
-            LlmResponse(content=None, tool_calls=[], tokens_in=4, tokens_out=2),
+            LlmResponse(
+                content=None,
+                tool_calls=[ToolCall(name="add", arguments={"a": n, "b": 40})],
+                tokens_in=4,
+                tokens_out=2,
+            ),
             LlmResponse(content=f"demo answer {n}: got your goal", tokens_in=6, tokens_out=8),
         ]
     )

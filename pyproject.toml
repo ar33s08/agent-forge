@@ -20,6 +20,10 @@ dev= [
   "mypy>=1.11",
 ]
 
+
+[project.optional-dependencies.serve]
+serve= ["uvicorn[standard]>=0.30"]
+
 [project.scripts]
 agent-forge= "agent_forge.cli:main"
 
@@ -27,13 +31,6 @@ agent-forge= "agent_forge.cli:main"
 requires= ["hatchling>=1.26"]
 build-backend= "hatchling.build"
 
-[tool.pytest]
-testpaths= ["tests"]
+["tests"]
 
-[tool.mypy]
-python-version= "3.11"
-ignore-missing-imports= true
 
-[tool.ruff]
-line-length= 100
-quote-style= "double"

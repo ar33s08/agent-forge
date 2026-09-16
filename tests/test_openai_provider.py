@@ -9,7 +9,6 @@ import pytest
 from agent_forge.models import ChatMessage, ToolCall
 from agent_forge.providers.openai import OpenAICompatibleProvider
 
-
 MODEL= "gpt-test-4o"
 
 
@@ -109,10 +108,9 @@ def test_tool_calls_parse_with_json_arguments():
     provider= make_provider(make_handler(payload=payload))
     resp= provider.complete(simple_messages())
     assert resp.content is None
-    assert resp.tool_calls== [
-        ToolCall(id="tc_9", name="lookup", arguments={"city": "oslo"}),
-        ToolCall(name="noop", arguments={}),
-    ]
+    assert resp.tool_calls[0]== ToolCall(id="tc_9", name="lookup", arguments={"city": "oslo"})
+    assert resp.tool_calls[1].name== "noop"
+    assert resp.tool_calls[1].arguments== {}
     assert resp.tool_calls[1].id  # auto-generated id
     assert (resp.tokens_in, resp.tokens_out)== (3, 2)
 

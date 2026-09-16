@@ -6,7 +6,6 @@ the SAME engine. Keep it thin: parse, wire demo tools, run, render.
 from __future__ import annotations
 
 import argparse
-import sys
 
 from agent_forge import __version__
 from agent_forge.agent import Agent, AgentConfig
@@ -25,9 +24,9 @@ def demo_registry() -> ToolRegistry:
 
     @reg.register(description="return the current ISO timestamp")
     def now() -> str:
-        from datetime import datetime
+        import datetime as _dtm
 
-        return datetime.now().astimeZone().isoformat(timespec="seconds")
+        return _dtm.datetime.now(_dtm.timezone.max).isoformat(timespec="seconds")
 
     return reg
 

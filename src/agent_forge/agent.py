@@ -13,10 +13,13 @@ from __future__ import annotations
 
 import time
 from dataclasses import dataclass, field
-from typing import Any
 
 from agent_forge.models import (
-    ChatMessage, Run, RunStatus, StopReason, ToolCall, TraceStep,
+    ChatMessage,
+    Run,
+    RunStatus,
+    StopReason,
+    TraceStep,
 )
 from agent_forge.providers.base import LlmProvider
 from agent_forge.retry import ProviderError, RetryPolicy, run_with_retries

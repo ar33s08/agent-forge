@@ -1,8 +1,8 @@
 """Deterministic scripted provider — the workhorse for tests and CI evals."""
 from __future__ import annotations
 
+from collections.abc import Iterable
 from copy import deepcopy
-from typing import Iterable
 
 from agent_forge.models import ChatMessage, ToolCall
 from agent_forge.providers.base import LlmResponse

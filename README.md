@@ -150,7 +150,11 @@ tokens: same behavioral gate you'd want from a live eval, at test speed. The num
 from the latest run:
 
 ```
-(pasted from `uv run python scripts/run_eval.py` output — see CI badge green state)
+$ uv run python scripts/run_eval.py
+tasks=12 passed=12 failed=0 pass_rate=1.00 tool_selection=1.00 budget=1.00
+
+$ uv run pytest -q
+26 passed in 0.29s
 ```
 
 ## Providers

@@ -9,8 +9,9 @@ from __future__ import annotations
 
 import inspect
 import time
-from dataclasses import dataclass, field
-from typing import Any, Callable
+from collections.abc import Callable
+from dataclasses import dataclass
+from typing import Any
 
 from pydantic import BaseModel, ValidationError, create_model
 
@@ -98,7 +99,7 @@ class ToolRegistry:
             )
         try:
             output= spec.fn(**validated.model_dump())
-        except Exception as exc:  # tool bugs must not crash the agent process
+        except Exception as exc:  # noqa: BLE001 - intentional: tool crash isolation  # tool bugs must not crash the agent process
             return ToolResult(
                 call_id=call.id, name=call.name, ok=False,
                 output=f"tool error {type(exc).__name__}: {exc}",

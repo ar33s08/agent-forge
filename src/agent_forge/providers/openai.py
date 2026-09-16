@@ -51,7 +51,7 @@ class OpenAICompatibleProvider:
         base_url: str | None= None,
         model: str | None= None,
         **kw: object,
-    ) -> "OpenAICompatibleProvider":
+    ) -> OpenAICompatibleProvider:
         """Build from AGENTFORGE_OPENAI_BASE_URL / _MODEL / _API_KEY env vars."""
         api_key= os.environ.get(_API_KEY_ENV)
         if not api_key:
